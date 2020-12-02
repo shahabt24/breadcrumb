@@ -1,0 +1,15 @@
+body {
+    padding: 0 !important;
+    margin: 0 !important;
+    background-color: #f8f9fa;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+a:hover {
+    text-decoration: none;
+}
+.mainContainer {
+    padding-top: 63px;
+}
