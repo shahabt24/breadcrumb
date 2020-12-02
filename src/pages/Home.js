@@ -11,14 +11,15 @@ const Home = (props) => {
 	}, [props]);
 
 	const getContent = (value, mainRoute) => {
+		// for the first route we dont have value
 		if (value === '') {
 			setContent(root);
 		} else {
 			if (mainRoute?.children.hasOwnProperty(value)) {
-
-					setContent(mainRoute.children[value]);
-
+				// if value exist in children of mainRoute
+				setContent(mainRoute.children[value]);
 			} else {
+				// if value not exist in children of mainRoute we have to repeat function to found it
 				Object.keys(mainRoute.children).forEach((item) => {
 					if (mainRoute.children[item].type !== 'file')
 						getContent(value, mainRoute.children[item]);
@@ -27,6 +28,7 @@ const Home = (props) => {
 		}
 	};
 
+	// render content of each route
 	return (
 		<ul className="w-100 d-flex flex-column pt-3">
 			{(Object.keys(content).length > 0 && content?.children) && Object.keys(content?.children).map((item) => {

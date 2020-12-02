@@ -4,9 +4,11 @@ import {Link, withRouter} from "react-router-dom";
 
 const Layout = (props) => {
 
+	// separate routes in url to make breadcrumb
 	let routes = props.location.pathname.split('/');
-	console.log(props.location.pathname);
 
+	// load breadcrumb
+	// line:23 in <Link to="*"> ==> each item in breadcrumb must have unique path, so we remove all next items, then join the rest together
 	return (
 		<div className="container-fluid p-0 m-0">
 			<Header />

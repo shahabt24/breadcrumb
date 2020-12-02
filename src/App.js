@@ -14,6 +14,7 @@ const App = () => {
       routeGenerator(root);
    }, []);
 
+   // generate Route for each level of root dir or file
    const routeGenerator = (root, path) => {
       if (root.type === 'dir') {
          let routeNames = root?.children;
@@ -26,6 +27,7 @@ const App = () => {
       }
    };
 
+   // render Routes
    return (
       <Layout>
          <Switch>
