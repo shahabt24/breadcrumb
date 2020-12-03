@@ -13,3 +13,12 @@ a:hover {
 .mainContainer {
     padding-top: 63px;
 }
+
+.bigText {
+    transition: 0.1s;
+}
+
+.bigText:hover {
+    margin-left: 10px;
+    transition: 0.1s;
+}

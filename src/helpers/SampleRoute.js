@@ -1,4 +1,4 @@
-export default {
+const root = {
 	type: "dir",
 	children: {
 		home: {
@@ -52,3 +52,5 @@ export default {
 
 	},
 };
+
+export default root;
