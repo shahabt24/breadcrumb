@@ -3,9 +3,11 @@ import root from '../helpers/SampleRoute';
 const GetContent = (path) => {
 	// make new promise to return fetched data
 	return new Promise((result) => {
-		getLastContent(path, root).then((response) => {
-			result(response);
-		});
+		setTimeout(() => {
+			getLastContent(path, root).then((response) => {
+				result(response);
+			});
+		}, 5000)
 	});
 };
 

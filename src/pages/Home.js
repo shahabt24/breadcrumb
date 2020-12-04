@@ -1,4 +1,4 @@
-import React, {useEffect, useState, memo} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import {Link, withRouter} from "react-router-dom";
 import GetContent from "../api/GetContent";
 import Loader from "react-loader-spinner";
@@ -11,7 +11,7 @@ const Home = (props) => {
 
 	useEffect(() => {
 		getContentData();
-	}, [route]);
+	}, []);
 
 	const getContentData = () => {
 		// last item of route
@@ -38,11 +38,11 @@ const Home = (props) => {
 			})
 	};
 
-	const tryAgain = () => {
+	const tryAgain = useCallback(() => {
 		// Hide UI then send request
 		setBigLoader(1);
 		getContentData();
-	};
+	}, []);
 
 	return (
 		<div className="w-100 d-flex flex-column pt-3">
@@ -82,4 +82,4 @@ const Home = (props) => {
 	)
 };
 
-export default memo(withRouter(Home));
+export default withRouter(Home);

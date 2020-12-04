@@ -10,7 +10,8 @@ const App = () => {
    return (
       <Layout>
          <Switch>
-            <Route path='/' component={Home}/>
+            <Route path='/' exact={true} component={(props) => <Home {...props} key={window.location.pathname} />}/>
+            <Route path='/:url' component={(props) => <Home {...props} key={window.location.pathname} />}/>
             <Route path="*" component={NoMatch} />
          </Switch>
       </Layout>
