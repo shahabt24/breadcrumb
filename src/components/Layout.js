@@ -13,7 +13,7 @@ const Layout = (props) => {
 		<div className="container-fluid p-0 m-0">
 			<Header />
 			<div className="mainContainer px-5">
-				<div className="d-flex py-3">
+				<div className="d-flex flex-wrap py-3">
 					{props.location.pathname === '/' && <span>...</span>}
 					{props.location.pathname !== '/' && <Link to="/">...</Link>}
 					{routes.map((item, index) => {
