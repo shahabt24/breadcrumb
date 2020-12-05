@@ -15,8 +15,7 @@ const Home = (props) => {
 
 	const getContentData = () => {
 		// last item of route
-		let path = route[route.length - 1];
-		GetContent(path)
+		GetContent(route)
 			.then((response) => {
 				if (response) {
 					if (response === 404) {

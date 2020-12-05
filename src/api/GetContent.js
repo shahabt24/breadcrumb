@@ -11,25 +11,25 @@ const GetContent = (path) => {
 	});
 };
 
-const getLastContent = async (value, mainRoute) => {
+const getLastContent = async (path, mainRoute) => {
+	let newPath = path.length === 1 ? path : path.slice(1);
 	// make new promise to return fetched data
 	return new Promise(result => {
-		// first root of data
-		if (value === '') {
+		let item = newPath[0];
+		if (newPath.length === 1 && item === '') {
+			// if current route is home("/")
 			result(mainRoute);
 		} else {
-			// if route exist in current root, will return to GetContent function
-			if (mainRoute?.children.hasOwnProperty(value)) {
-				result(mainRoute.children[value]);
-			} else {
-				// if route not found in current root, do this function (getLastContent) till found it
-				for (let i = 0; i < Object.keys(mainRoute?.children).length; i++) {
-					let item = mainRoute?.children[Object.keys(mainRoute?.children)[i]];
-					if (item.type !== 'file') {
-						result(getLastContent(value, item));
-					}
+			if (mainRoute?.children.hasOwnProperty(item)) {
+				// if this is the last item of newPath
+				if (newPath.length === 1) {
+					result(mainRoute.children[item]);
+				} else {
+					// if this is not the last item of newPath, will repeat this.function with new mainRoute
+					result(getLastContent(newPath, mainRoute.children[item]));
 				}
-				// if route not found
+			} else {
+				// if one part of url not match
 				result(404);
 			}
 		}
